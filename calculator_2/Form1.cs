@@ -19,13 +19,15 @@ namespace calculator_2
 
         private void button_click(object sender, EventArgs e)
         {
-            if (textBox1.Text == ",")
+            var button = (Button)sender;
+            if (button.Text == ",")
             {
                 if(!textBox1.Text.Contains(","))
                     textBox1.Text += (sender as Button).Text;
+                
             }
             else
-            textBox1.Text += (sender as Button).Text;
+                textBox1.Text += (sender as Button).Text;
         }
 
         double a = 0, b = 0, c = 0;
@@ -76,10 +78,7 @@ namespace calculator_2
                     case '^':
                         c = Math.Pow(a, b);
                         break;
-                    case '√':
-                        c = Math.Sqrt(a);//не пишет без второго числа
-                        break;
-
+                   
                 }
                 textBox1.Text = c.ToString();
             }
@@ -89,11 +88,25 @@ namespace calculator_2
             }
         }
 
-        
+        private void button17_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                a = Convert.ToDouble(textBox1.Text);
+                textBox1.Text = Convert.ToString(Math.Sqrt(a));
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             textBox1.Clear();
         }
+
+        
 
         private void button22_Click(object sender, EventArgs e)//знак
         {
